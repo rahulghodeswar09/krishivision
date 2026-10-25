@@ -1,0 +1,28 @@
+node_modules/
+.DS_Store
+*.log
+.env
+git init -b main
+git config user.name rahulghodeswar09
+git config user.email rahulghodeswar99@gmail.com
+
+git add README.md LICENSE .gitignore package.json
+git commit -m "chore: initialise KrishiVision project"
+
+git add index.html css
+git commit -m "feat(ui): add landing page layout and styles"
+
+git add js/analysis.js js/knowledge.js tests
+git commit -m "feat(core): add leaf analysis engine, knowledge base and unit tests"
+
+git add js/app.js server.js
+git commit -m "feat(app): wire uploader, sample leaves, damage overlay and results"
+
+git add .github
+git commit -m "ci: add GitHub Actions workflows"
+
+git add Dockerfile nginx.conf docker-compose.yml .dockerignore
+git commit -m "build: containerise with nginx and docker-compose"
+
+git add .
+git commit -m "docs: add screenshots, checklist and README"

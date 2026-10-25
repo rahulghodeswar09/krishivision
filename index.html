@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KrishiVision — Crop Health Intelligence</title>
+<meta name="description" content="Check a crop leaf photo for disease signs, estimate severity, and get prevention guidance for Maharashtra farms.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#top">KrishiVision</a>
+  <nav aria-label="Main"><a href="#how">How it works</a><a href="#library">Conditions</a><a href="#season">Season guide</a><a href="#limits">Limits</a></nav>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="intro">
+    <h1>Is your crop leaf healthy? Find out in seconds.</h1>
+    <p>Upload a leaf photo. KrishiVision marks the damaged areas, estimates how severe they are, and suggests what to do next for fields in Western Maharashtra.</p>
+  </div>
+
+  <div class="lab">
+    <div class="panel input">
+      <label for="crop">Crop</label>
+      <select id="crop">
+        <option value="sugarcane">Sugarcane</option><option value="rice">Rice</option>
+        <option value="soybean">Soybean</option><option value="tomato">Tomato</option>
+      </select>
+      <label class="drop" for="file">
+        <input id="file" type="file" accept="image/*" capture="environment">
+        <span><b>Choose a leaf photo</b><br>or take one with your camera</span>
+      </label>
+      <p class="small">No photo handy? Try a sample leaf:</p>
+      <div class="samples" role="group" aria-label="Sample leaves">
+        <button data-sample="healthy">Healthy</button><button data-sample="spot">Leaf spots</button>
+        <button data-sample="blight">Blight</button><button data-sample="yellow">Yellowing</button>
+        <button data-sample="rust">Rust</button>
+      </div>
+      <p class="small privacy">Your photo is analysed on this device and is never uploaded.</p>
+    </div>
+
+    <div class="panel view">
+      <div class="canvas-wrap">
+        <canvas id="canvas" width="320" height="320" aria-label="Leaf image with damaged areas highlighted"></canvas>
+        <p id="empty" class="empty">Your leaf will appear here.</p>
+      </div>
+      <label class="check"><input type="checkbox" id="overlay" checked> Highlight damaged areas</label>
+      <p class="legend"><i class="k-y"></i>Yellowing <i class="k-b"></i>Brown lesions <i class="k-d"></i>Dark lesions <i class="k-r"></i>Rust</p>
+    </div>
+
+    <div class="panel result" id="result" aria-live="polite">
+      <h2>Result</h2>
+      <p class="empty" id="result-empty">Pick a photo or a sample to see the result.</p>
+      <div id="result-body" hidden>
+        <p class="cond" id="cond"></p>
+        <div class="sev"><div class="bar"><span id="barfill"></span></div><p><b id="sevlabel"></b> — <span id="sevpct"></span> of the leaf affected</p></div>
+        <p id="advice-sev"></p>
+        <h3>What to do</h3>
+        <ul id="actions"></ul>
+        <p class="small" id="note"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="band">
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li><b>Find the leaf.</b> Background pixels are removed so only the leaf is measured.</li>
+    <li><b>Read the colours.</b> Each leaf pixel is sorted as healthy, yellow, brown, dark or rust-coloured.</li>
+    <li><b>Measure the damage.</b> The share of damaged area gives a severity grade from healthy to critical.</li>
+    <li><b>Match and advise.</b> Lesion colour and spread suggest the likely condition for your crop, with steps to follow.</li>
+  </ol>
+</section>
+
+<section id="library" class="band alt">
+  <h2>Conditions we screen for</h2>
+  <dl class="grid" id="libgrid"></dl>
+</section>
+
+<section id="season" class="band">
+  <h2>Season guide for Kolhapur and Western Maharashtra</h2>
+  <div class="seasons">
+    <div><h3>Kharif (June–October)</h3><p>Warm, humid monsoon weather favours fungal leaf spots, blast and blight in rice, soybean and sugarcane. Scout fields twice a week after continuous rain.</p></div>
+    <div><h3>Rabi (October–February)</h3><p>Cool nights and dew favour late blight in tomato and rust in several crops. Water in the morning so leaves dry before night.</p></div>
+    <div><h3>Summer (March–May)</h3><p>Heat and dry spells bring whitefly and aphids, which spread yellowing viruses. Check the underside of leaves.</p></div>
+  </div>
+</section>
+
+<section id="limits" class="band alt">
+  <h2>What this tool cannot do</h2>
+  <p>KrishiVision is a screening aid. It reads colour and spread, not leaf cells, so similar-looking problems (a nutrient gap versus a virus) can be confused. Before spraying anything, confirm with your nearest Krishi Vigyan Kendra (KVK) or taluka agriculture office and follow the label dose.</p>
+</section>
+</main>
+
+<footer><p>KrishiVision — Crop Health Intelligence. Built as a DevOps course project.</p></footer>
+<script src="js/knowledge.js"></script>
+<script src="js/analysis.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "krishivision",
+  "version": "1.0.0",
+  "description": "KrishiVision — Crop Health Intelligence: leaf disease screening, severity estimate and local prevention guidance.",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test",
+    "check": "node --check js/analysis.js && node --check js/knowledge.js && node --check js/app.js && node --check server.js"
+  },
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}

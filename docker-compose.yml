@@ -1,0 +1,8 @@
+services:
+  krishivision:
+    build: .
+    image: krishivision:latest
+    container_name: krishivision
+    ports:
+      - "8080:80"
+    restart: unless-stopped
